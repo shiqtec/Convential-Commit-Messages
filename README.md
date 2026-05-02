@@ -1,153 +1,120 @@
-# Conventional Commit Messages and When to Use Them
+# Git Commit Message Instructions
 
-Here is a structured list of conventional commit messages along with their intended use:
+Use Conventional Commits v1.0.0.
 
-## 1. `feat:` - New Feature
+Generate a clear, concise commit message based only on the staged diff.
 
-* **Usage:** When adding a new feature to the codebase.
-* **Example:**
+## Format
 
-  * `feat: add user login functionality`
-  * `feat: implement dark mode toggle`
+Subject line, required:
 
----
+```text
+<type>(<scope>): <summary>
+```
 
-## 2. `fix:` - Bug Fix
+Then:
 
-* **Usage:** When fixing a bug or an issue in the codebase.
-* **Example:**
+- Add a blank line after the subject.
+- Add a body only when it adds useful context.
+- Body must be 1–6 bullet points describing what changed and why.
+- Use present tense and imperative voice.
+- Add a footer only when needed.
 
-  * `fix: resolve login page crash`
-  * `fix: correct header alignment in mobile view`
+## Allowed Types
 
----
+Use one of the following types:
 
-## 3. `docs:` - Documentation
+- `feat` — new feature
+- `fix` — bug fix
+- `docs` — documentation changes
+- `style` — formatting, linting, whitespace, or code style only
+- `refactor` — code restructuring without behavior changes
+- `perf` — performance improvement
+- `test` — adding or updating tests
+- `build` — build system, tooling, or dependency changes
+- `ci` — CI/CD configuration or pipeline changes
+- `chore` — routine maintenance or minor non-functional changes
+- `revert` — reverting a previous commit
+- `hotfix` — urgent production bug fix
+- `security` — security vulnerability fix
+- `release` — version bump, release preparation, or tagging
 
-* **Usage:** For changes to documentation, including README files, comments, or inline documentation.
-* **Example:**
+## Scope Rules
 
-  * `docs: update README with setup instructions`
-  * `docs: add API endpoint descriptions`
+- Pick a short scope from the codebase when clear.
+- Examples: `api`, `sync`, `sftp`, `db`, `auth`, `ui`, `config`, `email`, `pdf`, `tests`.
+- Omit the scope if it is unclear.
+- Do not invent a scope that is not supported by the diff.
 
----
+## Subject Rules
 
-## 4. `style:` - Code Style
+- Keep the subject line 72 characters or fewer.
+- Use lowercase type and scope.
+- Use imperative voice.
+- Do not end the subject with a period.
+- Summarize the main intent of the change, not just the files changed.
 
-* **Usage:** For changes that do not affect the code's functionality, such as formatting, linting, or minor changes.
-* **Example:**
+## Body Rules
 
-  * `style: format code with Prettier`
-  * `style: adjust indentation in UserProfile component`
+- Add a body only when the change needs explanation.
+- Use bullet points only.
+- Write 1–6 bullet points.
+- Explain what changed and why, based on the diff.
+- Do not describe obvious file-level changes unless they matter.
+- If the reason for the change cannot be inferred, add this as the final body bullet:
 
----
+```text
+- Why: <fill in>
+```
 
-## 5. `refactor:` - Code Refactoring
+## Footer Rules
 
-* **Usage:** When making changes to the structure or organization of the code without affecting its behavior.
-* **Example:**
+- Include `BREAKING CHANGE: ...` when the change is breaking.
+- Include ticket references such as `ABC-123` if present in the branch name, code, comments, or diff.
+- Do not invent ticket references.
 
-  * `refactor: extract user authentication logic to separate module`
-  * `refactor: simplify data fetching logic in Dashboard`
+## Examples
 
----
+```text
+feat(auth): add user login functionality
+```
 
-## 6. `perf:` - Performance Improvement
+```text
+fix(ui): correct mobile header alignment
+```
 
-* **Usage:** When improving performance, such as optimizing queries or reducing load time.
-* **Example:**
+```text
+docs: update README setup instructions
+```
 
-  * `perf: reduce API response time by caching data`
-  * `perf: optimize image loading in Gallery page`
+```text
+refactor(api): extract authentication logic
 
----
+- Move token validation into a dedicated service.
+- Reduce duplication across protected endpoints.
+- Keep existing authentication behavior unchanged.
+```
 
-## 7. `test:` - Testing
+```text
+perf(db): cache frequently used lookup data
 
-* **Usage:** For adding or updating tests, including unit tests, integration tests, and end-to-end tests.
-* **Example:**
+- Add in-memory caching for reference data.
+- Reduce repeated database reads during request processing.
+```
 
-  * `test: add tests for authentication module`
-  * `test: update snapshot tests for header component`
+```text
+security(auth): sanitize registration input
 
----
+- Validate user-provided registration fields before processing.
+- Prevent unsafe values from reaching authentication logic.
+```
 
-## 8. `build:` - Build System or External Dependencies
+```text
+revert: remove dark mode implementation
+```
 
-* **Usage:** When making changes to build tools, libraries, or external dependencies.
-* **Example:**
+## Output Rules
 
-  * `build: upgrade to Node.js v18`
-  * `build: add ESLint and configure rules`
+Return only the commit message text.
 
----
-
-## 9. `ci:` - Continuous Integration
-
-* **Usage:** For changes to CI/CD configuration files and scripts.
-* **Example:**
-
-  * `ci: update GitHub Actions workflow`
-  * `ci: add deployment step to staging environment`
-
----
-
-## 10. `chore:` - Maintenance or Minor Changes
-
-* **Usage:** For routine tasks and minor changes that do not affect the code logic or functionality.
-* **Example:**
-
-  * `chore: update npm packages`
-  * `chore: remove unused imports`
-
----
-
-## 11. `revert:` - Reverting a Previous Commit
-
-* **Usage:** When rolling back a previous commit.
-* **Example:**
-
-  * `revert: remove dark mode implementation`
-  * `revert: "feat: add user profile section"`
-
----
-
-## 12. `ci:` - Continuous Integration
-
-* **Usage:** For changes in CI/CD configuration files and scripts.
-* **Example:**
-
-  * `ci: add GitHub Actions for code linting`
-  * `ci: update Jenkins pipeline configuration`
-
----
-
-## 13. `hotfix:` - Urgent Bug Fix
-
-* **Usage:** When addressing a critical bug that needs immediate attention.
-* **Example:**
-
-  * `hotfix: resolve server crash on login`
-  * `hotfix: fix payment gateway timeout issue`
-
----
-
-## 14. `security:` - Security Fixes
-
-* **Usage:** For addressing security vulnerabilities.
-* **Example:**
-
-  * `security: patch vulnerability in JWT authentication`
-  * `security: sanitize user input in registration form`
-
----
-
-## 15. `release:` - Release Versioning
-
-* **Usage:** When bumping versions or tagging releases.
-* **Example:**
-
-  * `release: v1.0.0`
-  * `release: prepare v2.0.0 for deployment`
-
----
+Do not include explanations, markdown formatting, code fences, alternatives, or commentary.
