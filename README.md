@@ -52,7 +52,7 @@ Use one of the following types:
 - Use lowercase type and scope.
 - Use imperative voice.
 - Do not end the subject with a period.
-- Summarize the main intent of the change, not just the files changed.
+- Summarise the main intent of the change, not just the files changed.
 
 ## Body Rules
 
